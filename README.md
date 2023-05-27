@@ -89,7 +89,7 @@ content: [
 ```
 import './index.css';
 ```
-## Installation React JS with Tailwind
+##  Running React JS with Tailwind
 
 Install my-project with npm
 
