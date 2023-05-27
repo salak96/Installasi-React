@@ -104,7 +104,9 @@ Install my-project with yarn
 ```
 
 - Untuk membuka di browser
-```http://localhost:5173/```
+```
+http://localhost:5173/
+```
 
 ## 🚀 About Me
 Saya adalah seorang Front End Developer yang ingin terus belajar dan mengembangkan diri. Saya juga ingin berbagi ilmu yang saya dapatkan melalui tulisan di blog saya [lambangsasangka.com](https://lambangsasangka.com/).
