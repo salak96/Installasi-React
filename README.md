@@ -8,20 +8,25 @@ The React Framework for Production Next.js gives you the best developer experien
 
  - [Vite](https://vitejs.dev/guide/)
  
- ``` 
- npm create vite@latest nama-project -- --template react
-  ```
- - Install node.module
- 
- ```npm install```
+```
+npm create vite@latest nama-project -- --template react
+```
+- Install node.module
+ ```
+  npm install
+ ```
 
 ## Formatter pritter code
 
-```npm install --save-dev --save-exact prettier```
+```
+npm install --save-dev --save-exact prettier
+```
 
 - Buat folder di root
 
-```.prettierrc.json```
+```
+.prettierrc.json
+```
 
 - Masukan isi .prittierrc.json
 
