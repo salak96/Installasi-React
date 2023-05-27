@@ -11,7 +11,7 @@ The React Framework for Production Next.js gives you the best developer experien
  ``` 
  npm create vite@latest nama-project -- --template react
   ```
- - Selanjutnya install node.module
+ - Install node.module
  
  ```npm install```
 
@@ -38,20 +38,36 @@ The React Framework for Production Next.js gives you the best developer experien
 ```
 
 - command di terminal
-```npx prettier --write . ```
+
+```
+npx prettier --write . 
+```
 
 - edit package json . di script tambahkan
-``` "format": "prettier --write .", ```
+
+``` 
+"format": "prettier --write .", 
+```
 
 - untuk menjalankan di terminal
-```npm run format```
-## 🚀 [Install Tailwind CSS di react JS] (https://tailwindcss.com/docs/guides/create-react-app)
+
+```
+npm run format
+```
+
+## [Install Tailwind](https://tailwindcss.com/docs/guides/create-react-app)
 
 - Ketik kode di terminal
-```npm install -D tailwindcss postcss autoprefixer```
+
+```
+npm install -D tailwindcss postcss autoprefixer
+```
 
 - Ketik di terminal 
-``` npx tailwindcss init -p ```
+
+``` 
+npx tailwindcss init -p 
+```
 
 - copy script bawah ke tailwind.config.js ke isi content
 ```
