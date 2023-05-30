@@ -5,7 +5,7 @@ const FormRegister = () => {
         <form action=''>
             <Inputform label='Fullname' type='type' placeholder='insert name' name='fullname' />
             <Inputform label='Password' type='password' placeholder='*****' name='Password ' />
-            <Inputform label='Confirm Password' type='password' placeholder='*****' name='Confirm Password'/>
+            <Inputform label='Confirm Password' type='password' placeholder='*****' name='Confirm Password' />
             <Button classname='bg-blue-600 w-full'> Register</Button>
         </form>
     );
