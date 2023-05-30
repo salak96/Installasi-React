@@ -6,6 +6,7 @@ import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import LoginPage from './pages/login.jsx';
 import RegisterPage from './pages/register';
+import ProductPage from './pages/product';
 // eslint-disable-next-line no-unused-vars
 import ErrorPage from './pages/404.jsx';
 const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
     {
         path: '/register',
         element: <RegisterPage />,
+    },
+    {
+        path: '/product',
+        element: <ProductPage />,
     },
 ]);
 

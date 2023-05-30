@@ -6,7 +6,7 @@ const Button = (props) => {
     // eslint-disable-next-line no-unused-vars
     const { children = '...', classname = 'bg-black' } = props;
     return (
-        <button className={`h-10 px-6 text-white font-semibold ${classname} rounded-md`} type='submit'>
+        <button className={`bg-blue-800 h-10 px-6 text-white font-semibold ${classname} rounded-md`} type='submit'>
             {children}
         </button>
     );
