@@ -50,12 +50,21 @@ const product = () => {
         window.location.href = '/login';
     };
     const handleAddToCart = (id) => {
-       setCart([...cart, 
-        {
-           id: 1,
-           qty: 1,
-        },
-    ]);
+        if(cart.find((item) => item.id === id)){
+            const newCart = cart.map((item) => {
+                if(item.id === id){
+                    return {
+                        ...item,
+                        qty: item.qty + 1,
+                    };
+                }
+                return item;
+            });
+            setCart(newCart);
+        }else{
+            setCart([...cart, {id,qty:1}]);
+        }
+        
     };
     return (
         <>
@@ -72,38 +81,34 @@ const product = () => {
                         <CardProduct key={product.id}>
                             <CardProduct.Header image={product.image} />
                             <CardProduct.Body title={product.title}>{product.description}</CardProduct.Body>
-                            <CardProduct.Footer price={product.price} id={product.id} addtoCard={handleAddToCart} />
+                            <CardProduct.Footer price={product.price} id={product.id} handleAddToCart={handleAddToCart} />
                         </CardProduct>
                     ))}
                 </div>
-                <div className='w-1/4'>
-                    <h1 className='text-3xl font-bold text-blac'>Cart </h1>
-                    <ul className='list-disc'>
-                        {cart.map((item) => (
-                            <li key={item.id}>
-                                {' '}
-                                {item.name} x {item.price}
-                            </li>
-                        ))}
-                    </ul>
-                    <table className='table-auto'>
+                <div className='w-2/6'>
+                    <h1 className='flex m-5 flex-start text-3xl font-bold text-blue-600 '>Cart</h1>
+                    <table className='text-left table-auto'>
                         <thead>
                             <tr>
                                 <th className='px-4 py-2'>Product</th>
-                                <th className='px-4 py-2'>Qty</th>
                                 <th className='px-4 py-2'>Price</th>
+                                <th className='px-4 py-2'>Quantity</th>
                                 <th className='px-4 py-2'>Total</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {cart.map((item) => (
+                            {cart.map((item) => {
+                            const product = products.find((product) => product.id === item.id);
+                            return (
                                 <tr key={item.id}>
-                                    <td className='border px-4 py-2'>{item.name}</td>
+                                    <td className='border px-4 py-2'>{product.title}</td>
+                                    <td className='border px-4 py-2'>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(product.price)}</td>
                                     <td className='border px-4 py-2'>{item.qty}</td>
-                                    <td className='border px-4 py-2'>{item.price}</td>
-                                    <td className='border px-4 py-2'>{item.qty * item.price}</td>
+                                    <td className='border px-4 py-2'>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(item.qty * product.price)}</td>
                                 </tr>
-                            ))}
+                            );
+                            })}
+
                         </tbody>
                     </table>
                 </div>
