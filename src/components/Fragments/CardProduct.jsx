@@ -4,7 +4,7 @@ import Button from '../Elements/Button/Button';
 const CardProduct = (props) => {
     // eslint-disable-next-line no-unused-vars
     const { children } = props;
-    return <div className='mx-2 w-full max-w-sm bg-gray-800 border border-slate-400 rouded-lg shadow'>{children}</div>;
+    return <div className='my-2 mx-2 w-full max-w-sm bg-gray-800 border border-slate-400 rouded-lg shadow'>{children}</div>;
 };
 
 // eslint-disable-next-line no-unused-vars
@@ -34,13 +34,15 @@ const Body = (props) => {
 
 // eslint-disable-next-line no-unused-vars
 const Footer = (props) => {
-    const { price } = props;
+    const { price,addtoCard,id } = props;
     return (
         <div className='flex justify-between px-5 pb-5'>
             <a href='#'>
-                <h5 className='text-white text-xl font-bold tracking-tight '>{[price]}</h5>
+                <span className='text-white text-xl font-bold tracking-tight '>
+                    {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(price)}
+                </span>
             </a>
-            <Button type='button' className='bg-blue-600 hover:bg-red-600 text-white text-sm px-4 py-2 rounded-lg'>
+            <Button type='button' className='bg-blue-600  hover:bg-red-600 text-white text-sm px-4 py-2 rounded-lg' onclick={()=>addtoCard(id)}>
                 Add to Cart
             </Button>
         </div>
