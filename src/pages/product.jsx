@@ -35,28 +35,23 @@ const products = [
 ];
 const email = localStorage.getItem('email');
 
-const password = localStorage.getItem('password');
-
 const product = () => {
     const [cart, setCart] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
-    useEffect(() => {
-       setCart([...JSON.parse(localStorage.getItem('cart'))
 
-       ]);
+    useEffect(() => {
+        setCart(JSON.parse(localStorage.getItem('cart')) || []);
     }, []);
     useEffect(() => {
-       if(cart.length > 0){
-        const sum = cart.reduce((acc,item ) => {
-            const product = products.find((product) => product.id === item.id);
-            return acc + item.qty * item.price;
-     }
-       ,0);
-          setTotalPrice(sum);
-          localStorage.setItem('cart', JSON.stringify(cart));
-       }
+        if (cart.length > 0) {
+            const sum = cart.reduce((acc, item) => {
+                const product = products.find((product) => product.id === item.id);
+                return acc + item.qty * item.price;
+            }, 0);
+            setTotalPrice(sum);
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
     }, [cart]);
-    
 
     const handleLogOut = () => {
         localStorage.removeItem('email');
@@ -64,16 +59,11 @@ const product = () => {
         window.location.href = '/login';
     };
     const handleAddToCart = (id) => {
-        if(cart.find((item) => item.id === id)){
-           setCart(
-            cart.map((item) =>
-            item.id === id ? { ...item, qty: item.qty + 1 } : item)
-            )
-           }
-           else
-           {
+        if (cart.find((item) => item.id === id)) {
+            setCart(cart.map((item) => (item.id === id ? { ...item, qty: item.qty + 1 } : item)));
+        } else {
             setCart([...cart, { id, qty: 1 }]);
-           }        
+        }
     };
     return (
         <>
@@ -107,28 +97,36 @@ const product = () => {
                         </thead>
                         <tbody>
                             {cart.map((item) => {
-                            const product = products.find((product) => product.id === item.id);
-                            return (
-                                <tr key={item.id}>
-                                    <td className='border px-4 py-2'>{product.title}</td>
-                                    <td className='border px-4 py-2'>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(product.price)}</td>
-                                    <td className='border px-4 py-2'>{item.qty}</td>
-                                    <td className='border px-4 py-2'>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(item.qty * product.price)}</td>
-                                </tr>
-                            );
+                                const product = products.find((product) => product.id === item.id);
+                                return (
+                                    <tr key={item.id}>
+                                        <td className='border px-4 py-2'>{product.title}</td>
+                                        <td className='border px-4 py-2'>
+                                            {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(
+                                                product.price
+                                            )}
+                                        </td>
+                                        <td className='border px-4 py-2'>{item.qty}</td>
+                                        <td className='border px-4 py-2'>
+                                            {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(
+                                                item.qty * product.price
+                                            )}
+                                        </td>
+                                    </tr>
+                                );
                             })}
                             <tr>
                                 <td className='border px-4 py-2' colSpan='3'>
-                                   <b>Total Price</b>
+                                    <b>Total Price</b>
                                 </td>
                                 <td className='border px-4 py-2'>
                                     <b>
-                                    {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(
-                                        cart.reduce((totalPrice, item) => {
-                                            const product = products.find((product) => product.id === item.id);
-                                            return totalPrice + item.qty * product.price;
-                                        }, 0)
-                                    )}
+                                        {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(
+                                            cart.reduce((totalPrice, item) => {
+                                                const product = products.find((product) => product.id === item.id);
+                                                return totalPrice + item.qty * product.price;
+                                            }, 0)
+                                        )}
                                     </b>
                                 </td>
                             </tr>
