@@ -2,11 +2,9 @@
 import Button from '../Elements/Button/Button';
 
 const CardProduct = (props) => {
-    
     const { children } = props;
     return <div className='my-2 mx-2 w-full max-w-sm bg-gray-800 border border-slate-400 rouded-lg shadow'>{children}</div>;
 };
-
 
 const Header = (props) => {
     const { image } = props;
@@ -17,9 +15,7 @@ const Header = (props) => {
     );
 };
 
-
 const Body = (props) => {
-    
     const { children, title } = props;
     return (
         <div className='px-5 pb-5'>
