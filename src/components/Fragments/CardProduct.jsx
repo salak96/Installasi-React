@@ -2,12 +2,12 @@
 import Button from '../Elements/Button/Button';
 
 const CardProduct = (props) => {
-    // eslint-disable-next-line no-unused-vars
+    
     const { children } = props;
     return <div className='my-2 mx-2 w-full max-w-sm bg-gray-800 border border-slate-400 rouded-lg shadow'>{children}</div>;
 };
 
-// eslint-disable-next-line no-unused-vars
+
 const Header = (props) => {
     const { image } = props;
     return (
@@ -17,9 +17,9 @@ const Header = (props) => {
     );
 };
 
-// eslint-disable-next-line no-unused-vars
+
 const Body = (props) => {
-    // eslint-disable-next-line no-unused-vars
+    
     const { children, title } = props;
     return (
         <div className='px-5 pb-5'>
@@ -32,7 +32,6 @@ const Body = (props) => {
     );
 };
 
-// eslint-disable-next-line no-unused-vars
 const Footer = (props) => {
     const { price, handleAddToCart, id } = props;
     return (
