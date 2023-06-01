@@ -65,29 +65,23 @@ const product = () => {
             setCart([...cart, { id, qty: 1 }]);
         }
     };
- 
-      //useref
-      const cartRef = useRef(JSON.parse(localStorage.getItem('cart')) || []);
-      const handleAddToCartRef = (id) => {
-          cartRef.current = [...cartRef.current,{id,qty: 2,}];
-          localStorage.setItem('cart', JSON.stringify(cartRef.current));
-      };
-    
+
+    //useref
+    const cartRef = useRef(JSON.parse(localStorage.getItem('cart')) || []);
+    const handleAddToCartRef = (id) => {
+        cartRef.current = [...cartRef.current, { id, qty: 2 }];
+        localStorage.setItem('cart', JSON.stringify(cartRef.current));
+    };
+
     const totalPriceRef = useRef(null);
 
     useEffect(() => {
-        if(cart.length > 0){
+        if (cart.length > 0) {
             totalPriceRef.current.style.display = 'table-row';
-        }else{
+        } else {
             totalPriceRef.current.style.display = 'none';
-        }    
-
+        }
     }, [cart]);
-
-
-
-
-
 
     return (
         <>
