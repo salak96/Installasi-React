@@ -65,13 +65,29 @@ const product = () => {
             setCart([...cart, { id, qty: 1 }]);
         }
     };
-
+ 
       //useref
       const cartRef = useRef(JSON.parse(localStorage.getItem('cart')) || []);
       const handleAddToCartRef = (id) => {
           cartRef.current = [...cartRef.current,{id,qty: 2,}];
           localStorage.setItem('cart', JSON.stringify(cartRef.current));
       };
+    
+    const totalPriceRef = useRef(null);
+
+    useEffect(() => {
+        if(cart.length > 0){
+            totalPriceRef.current.style.display = 'table-row';
+        }else{
+            totalPriceRef.current.style.display = 'none';
+        }    
+
+    }, [cart]);
+
+
+
+
+
 
     return (
         <>
@@ -123,7 +139,7 @@ const product = () => {
                                     </tr>
                                 );
                             })}
-                            <tr>
+                            <tr ref={totalPriceRef}>
                                 <td className='border px-4 py-2' colSpan='3'>
                                     <b>Total Price</b>
                                 </td>
