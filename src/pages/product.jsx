@@ -38,12 +38,8 @@ const email = localStorage.getItem('email');
 const password = localStorage.getItem('password');
 
 const product = () => {
-    const [cart, setCart] = useState([
-        {
-            id: 1,
-            qty: 1,
-        },
-    ]);
+    const [cart, setCart] = useState([]);
+    
     const handleLogOut = () => {
         localStorage.removeItem('email');
         localStorage.removeItem('password');
@@ -51,20 +47,15 @@ const product = () => {
     };
     const handleAddToCart = (id) => {
         if(cart.find((item) => item.id === id)){
-            const newCart = cart.map((item) => {
-                if(item.id === id){
-                    return {
-                        ...item,
-                        qty: item.qty + 1,
-                    };
-                }
-                return item;
-            });
-            setCart(newCart);
-        }else{
-            setCart([...cart, {id,qty:1}]);
-        }
-        
+           setCart(
+            cart.map((item) =>
+            item.id === id ? { ...item, qty: item.qty + 1 } : item)
+            )
+           }
+           else
+           {
+            setCart([...cart, { id, qty: 1 }]);
+           }        
     };
     return (
         <>

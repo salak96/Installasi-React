@@ -34,7 +34,7 @@ const Body = (props) => {
 
 // eslint-disable-next-line no-unused-vars
 const Footer = (props) => {
-    const { price,handleAddToCart,id } = props;
+    const { price, handleAddToCart, id } = props;
     return (
         <div className='flex justify-between px-5 pb-5'>
             <a href='#'>
@@ -42,8 +42,11 @@ const Footer = (props) => {
                     {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(price)}
                 </span>
             </a>
-            <Button type='button' className='bg-blue-600  hover:bg-red-600 text-white text-sm px-4 py-2 rounded-lg' 
-            onClick={() => handleAddToCart(id)}>
+            <Button
+                type='button'
+                className='bg-blue-600  hover:bg-red-600 text-white text-sm px-4 py-2 rounded-lg'
+                onClick={() => handleAddToCart(id)}
+            >
                 Add to Cart
             </Button>
         </div>
