@@ -50,12 +50,12 @@ const product = () => {
     const totalPriceRef = useRef(null);
 
     useEffect(() => {
-        if (cart.length > 0) {
+        if (products.length > 0 && cart.length > 0) {
             totalPriceRef.current.style.display = 'table-row';
         } else {
             totalPriceRef.current.style.display = 'none';
         }
-    }, [cart]);
+    }, [cart,products]);
 
     return (
         <>
@@ -95,13 +95,13 @@ const product = () => {
                                     <tr key={item.id}>
                                         <td className='border px-4 py-2'>{products.find((product) => product.id === item.id).title}</td>
                                         <td className='border px-4 py-2'>
-                                            {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(
+                                            {new Intl.NumberFormat('AS-US', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(
                                                 product.price
                                             )}
                                         </td>
                                         <td className='border px-4 py-2'>{item.qty}</td>
                                         <td className='border px-4 py-2'>
-                                            {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(
+                                            {new Intl.NumberFormat('id-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(
                                                 item.qty * product.price
                                             )}
                                         </td>
@@ -114,13 +114,12 @@ const product = () => {
                                 </td>
                                 <td className='border px-4 py-2'>
                                     <b>
-                                    {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(
+                                        {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(
                                             cart.reduce((totalPrice, item) => {
                                                 const product = products.find((product) => product.id === item.id);
-                                                return totalPrice + item.qty * product.price;
+                                                return totalPrice + item.qty * products.price;
                                             }, 0)
                                         )}
-
                                     </b>
                                 </td>
                             </tr>

@@ -10,7 +10,7 @@ const Header = (props) => {
     const { image } = props;
     return (
         <a href='#' className='block relative'>
-            <img alt='product' src={image} className='h-3/4 p-8 rounded-t-lg w-full h-30' />
+            <img alt='product' src={image} className='p-8 rounded-t-lg w-full h-60 object-cover'/>
         </a>
     );
 };
@@ -18,11 +18,11 @@ const Header = (props) => {
 const Body = (props) => {
     const { children, title } = props;
     return (
-        <div className='px-5 pb-5'>
+        <div className='px-5 pb-5 h-40'>
             <a href='#'>
-                <h5 className='text-white text-xl font-bold tracking-tight  '>{title}</h5>
+                <h5 className='text-white text-xl font-bold tracking-tight'>{title.substring(0,20)}... </h5>
             </a>
-            <p className='mt-1 text-slate-600'>{children}</p>
+            <p className='mt-1 text-slate-600'>{children.substring(0,100)}</p>
             <div className='mt-2 flex items-center'></div>
         </div>
     );
@@ -34,7 +34,9 @@ const Footer = (props) => {
         <div className='flex justify-between px-5 pb-5'>
             <a href='#'>
                 <span className='text-white text-xl font-bold tracking-tight '>
-                    {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(price)}
+                    {new Intl.NumberFormat('id-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(
+                        price
+                    )}
                 </span>
             </a>
             <Button
