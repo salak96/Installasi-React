@@ -61,7 +61,7 @@ const product = () => {
     return (
         <>
             <div className='flex justify-end bg-blue-600 h-20  text-red-50 items-center px-10'>
-                {username}
+                <a className='text-white text-2xl' href='/profile'> {username}</a>   
                 <Button classname={'bg-red-600 ml-5'} onClick={handleLogOut}>
                     Log out
                 </Button>

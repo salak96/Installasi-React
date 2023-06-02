@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import Button from "../components/Elements/Button/Button";
 import { useLogin } from "../hooks/useLogin"
 
 export const ProfilePage = () =>{
@@ -9,8 +11,10 @@ export const ProfilePage = () =>{
           src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
           alt={"username"}
         />
-        <span className="text-sm font-medium text-red-600">{username}</span>
-        <a href="/login" className="text-sm font-medium text-red-600">Log in</a>
+        <span className=" text-2xl font-medium text-red-600">{username}</span>
+        <Button  className=" text-2xl font-medium text-blue-600">
+            <Link to="/login">Login</Link>
+        </Button>
       </div>
     )
 }

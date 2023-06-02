@@ -9,7 +9,7 @@ const CardProduct = (props) => {
 const Header = (props) => {
     const { image } = props;
     return (
-        <a href='#' className='block relative'>
+        <a href='/profile' className='block relative'>
             <img alt='product' src={image} className='p-8 rounded-t-lg w-full h-60 object-cover' />
         </a>
     );
