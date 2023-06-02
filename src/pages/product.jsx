@@ -6,8 +6,6 @@ import { useState, useEffect, useRef } from 'react';
 import { getProducts } from '../services/product.service';
 import { getUsername } from '../services/auth.service';
 
-const token = localStorage.getItem('token');
-
 //data products
 const product = () => {
     const [cart, setCart] = useState([]);
@@ -21,16 +19,19 @@ const product = () => {
         if (products.length > 0 && cart.length > 0) {
             setTotalPrice(products.reduce((acc, item) => acc + item.price * item.qty, 0));
         }
-
     }, [cart, products]);
     //token
     useEffect(() => {
-      setUsername(getUsername(token));
+        const token = localStorage.getItem('token');
+        if (token) {
+            setUsername(getUsername(token));
+        } else {
+            window.location.href = '/login';
+        }
     }, []);
 
     const handleLogOut = () => {
-        localStorage.removeItem('username');
-        localStorage.removeItem('password');
+        localStorage.removeItem('token');
         window.location.href = '/login';
     };
     const handleAddToCart = (id) => {
@@ -40,16 +41,11 @@ const product = () => {
             setCart([...cart, { id, qty: 1 }]);
         }
     };
-//useEffect
-    useEffect (() => {
-        getProducts((data)=>
-            setProducts(data)
-        );
+    //useEffect
+    useEffect(() => {
+        getProducts((data) => setProducts(data));
     }, []);
-    useEffect(()=>{
-        getUsername(token);
-    }
-    ,[]);
+
     //useref
     const cartRef = useRef(JSON.parse(localStorage.getItem('cart')) || []);
     const handleAddToCartRef = (id) => {
@@ -65,7 +61,7 @@ const product = () => {
         } else {
             totalPriceRef.current.style.display = 'none';
         }
-    }, [cart,products]);
+    }, [cart, products]);
 
     return (
         <>
@@ -78,13 +74,14 @@ const product = () => {
 
             <div className='flex justify-center py-2 mx-2'>
                 <div className='w-3/4 flex flex-wrap m-2'>
-                    {products.length > 0 && products.map((product) => (
-                        <CardProduct key={product.id}>
-                            <CardProduct.Header image={product.image} />
-                            <CardProduct.Body title={product.title}>{product.description}</CardProduct.Body>
-                            <CardProduct.Footer price={product.price} id={product.id} handleAddToCart={handleAddToCart} />
-                        </CardProduct>
-                    ))}
+                    {products.length > 0 &&
+                        products.map((product) => (
+                            <CardProduct key={product.id}>
+                                <CardProduct.Header image={product.image} />
+                                <CardProduct.Body title={product.title}>{product.description}</CardProduct.Body>
+                                <CardProduct.Footer price={product.price} id={product.id} handleAddToCart={handleAddToCart} />
+                            </CardProduct>
+                        ))}
                 </div>
                 <div className='w-2/6'>
                     <h1 className='flex m-5 flex-start text-3xl font-bold text-blue-600 '>Cart</h1>
@@ -98,27 +95,31 @@ const product = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {products.length > 0 && cart.map((item) => {
-                                const product = products.find(
-                                    (product) => product.id === item.id);
-                                return (
-                                    <tr key={item.id}>
-                                        <td className='border px-4 py-2'>{products.find((product) => product.id === item.id).title}</td>
-                                        <td className='border px-4 py-2'>
-                                            {new Intl.NumberFormat('AS-US', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(
-                                                product.price
-                                            )}
-                                        </td>
-                                        <td className='border px-4 py-2'>{item.qty}</td>
-                                        <td className='border px-4 py-2'>
-                                            {new Intl.NumberFormat('id-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(
-                                                item.qty * product.price
-                                            )}
-                                        </td>
-                                    </tr>
-                                );
-                            })}
-                             <tr ref={totalPriceRef}>
+                            {products.length > 0 &&
+                                cart.map((item) => {
+                                    const product = products.find((product) => product.id === item.id);
+                                    return (
+                                        <tr key={item.id}>
+                                            <td className='border px-4 py-2'>{products.find((product) => product.id === item.id).title}</td>
+                                            <td className='border px-4 py-2'>
+                                                {new Intl.NumberFormat('AS-US', {
+                                                    style: 'currency',
+                                                    currency: 'IDR',
+                                                    minimumFractionDigits: 0,
+                                                }).format(product.price)}
+                                            </td>
+                                            <td className='border px-4 py-2'>{item.qty}</td>
+                                            <td className='border px-4 py-2'>
+                                                {new Intl.NumberFormat('id-US', {
+                                                    style: 'currency',
+                                                    currency: 'USD',
+                                                    minimumFractionDigits: 0,
+                                                }).format(item.qty * product.price)}
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
+                            <tr ref={totalPriceRef}>
                                 <td className='border px-4 py-2' colSpan='3'>
                                     <b>Total Price</b>
                                 </td>
