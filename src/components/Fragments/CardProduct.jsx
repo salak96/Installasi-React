@@ -10,7 +10,7 @@ const Header = (props) => {
     const { image } = props;
     return (
         <a href='#' className='block relative'>
-            <img alt='product' src={image} className='p-8 rounded-t-lg' />
+            <img alt='product' src={image} className='h-3/4 p-8 rounded-t-lg w-full h-30' />
         </a>
     );
 };

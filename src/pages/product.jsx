@@ -17,14 +17,10 @@ const product = () => {
     }, []);
     useEffect(() => {
         if (products.length > 0 && cart.length > 0) {
-            const sum = cart.reduce((acc, item) => {
-                const product = products.find((product) => product.id === item.id);
-                return acc + item.qty * item.price;
-            }, 0);
-            setTotalPrice(sum);
-            localStorage.setItem('cart', JSON.stringify(cart));
+            setTotalPrice(products.reduce((acc, item) => acc + item.price * item.qty, 0));
         }
-    }, [cart]);
+
+    }, [cart, products]);
 
     const handleLogOut = () => {
         localStorage.removeItem('email');
@@ -93,10 +89,11 @@ const product = () => {
                         </thead>
                         <tbody>
                             {products.length > 0 && cart.map((item) => {
-                                const product = products.find((product) => product.id === item.id);
+                                const product = products.find(
+                                    (product) => product.id === item.id);
                                 return (
                                     <tr key={item.id}>
-                                        <td className='border px-4 py-2'>{product.title}</td>
+                                        <td className='border px-4 py-2'>{products.find((product) => product.id === item.id).title}</td>
                                         <td className='border px-4 py-2'>
                                             {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(
                                                 product.price
@@ -117,12 +114,13 @@ const product = () => {
                                 </td>
                                 <td className='border px-4 py-2'>
                                     <b>
-                                        {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(
+                                    {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(
                                             cart.reduce((totalPrice, item) => {
                                                 const product = products.find((product) => product.id === item.id);
                                                 return totalPrice + item.qty * product.price;
                                             }, 0)
                                         )}
+
                                     </b>
                                 </td>
                             </tr>
