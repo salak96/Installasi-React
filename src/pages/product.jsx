@@ -108,16 +108,16 @@ const product = () => {
                                     </tr>
                                 );
                             })}
-                            <tr ref={totalPriceRef}>
+                             <tr ref={totalPriceRef}>
                                 <td className='border px-4 py-2' colSpan='3'>
                                     <b>Total Price</b>
                                 </td>
                                 <td className='border px-4 py-2'>
                                     <b>
-                                        {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(
+                                        {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(
                                             cart.reduce((totalPrice, item) => {
                                                 const product = products.find((product) => product.id === item.id);
-                                                return totalPrice + item.qty * products.price;
+                                                return totalPrice + item.qty * product.price;
                                             }, 0)
                                         )}
                                     </b>
