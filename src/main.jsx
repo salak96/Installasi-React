@@ -10,6 +10,7 @@ import ProductPage from './pages/product';
 import HomePage from './pages/home';
 // eslint-disable-next-line no-unused-vars
 import ErrorPage from './pages/404.jsx';
+import { ProfilePage } from './pages/profile';
 const router = createBrowserRouter([
     {
         path: '/',
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
         path: '/product',
         element: <ProductPage />,
     },
+    {
+        path: '/profile',
+        element: <ProfilePage />,
+    }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

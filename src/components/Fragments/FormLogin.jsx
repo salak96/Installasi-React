@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import Button from '../Elements/Button/Button';
 import Inputform from '../Elements/Input/index';
 import { Login } from '../../services/auth.service';
+import UserLogin from '../user/UserLogin';
 const FormLogin = () => {
     const [loginFailed, setLoginFailed] = useState('');
     const handleLogin = (event) => {
@@ -35,7 +36,9 @@ const FormLogin = () => {
                 Login
             </Button>
             {loginFailed && <p className='text-red-500 m-t-5 text-center'>{loginFailed}</p>}
+            <UserLogin></UserLogin>
         </form>
+        
     );
 };
 

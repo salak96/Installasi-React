@@ -21,7 +21,7 @@ const AuthLayouts = (props) => {
 const Navigation = ({ type }) => {
     if (type === 'login') {
         return (
-            <p className='text-sm mt-4'>
+            <p className='ml-10 flex justify-items-center align-center text-sm mt-4'>
                 Dont have an account yet ?{' '}
                 <Link to='/register' className='font-bold text-blue-600 hover:text-blue-800'>
                     Register
@@ -30,7 +30,7 @@ const Navigation = ({ type }) => {
         );
     } else {
         return (
-            <p className='flex justify-center align-center text-sm mt-4'>
+            <p className='ml-10 flex justify-items-center align-center text-sm mt-4'>
                 Already have an account ?{' '}
                 <Link to='/login' className='font-bold text-blue-600 hover:text-blue-800'>
                     Login

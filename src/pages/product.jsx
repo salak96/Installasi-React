@@ -5,13 +5,15 @@ import CardProduct from '../components/Fragments/CardProduct';
 import { useState, useEffect, useRef } from 'react';
 import { getProducts } from '../services/product.service';
 import { getUsername } from '../services/auth.service';
+import { useLogin } from '../hooks/useLogin';
 
 //data products
 const product = () => {
     const [cart, setCart] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
     const [products, setProducts] = useState([]);
-    const [username, setUsername] = useState('');
+    const username = useLogin(); //hooks useLogin username
+
     useEffect(() => {
         setCart(JSON.parse(localStorage.getItem('cart')) || []);
     }, []);
@@ -20,15 +22,8 @@ const product = () => {
             setTotalPrice(products.reduce((acc, item) => acc + item.price * item.qty, 0));
         }
     }, [cart, products]);
-    //token
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            setUsername(getUsername(token));
-        } else {
-            window.location.href = '/login';
-        }
-    }, []);
+  
+
 
     const handleLogOut = () => {
         localStorage.removeItem('token');
