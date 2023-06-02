@@ -16,7 +16,7 @@ const product = () => {
         setCart(JSON.parse(localStorage.getItem('cart')) || []);
     }, []);
     useEffect(() => {
-        if (cart.length > 0) {
+        if (products.length > 0 && cart.length > 0) {
             const sum = cart.reduce((acc, item) => {
                 const product = products.find((product) => product.id === item.id);
                 return acc + item.qty * item.price;
@@ -72,7 +72,7 @@ const product = () => {
 
             <div className='flex justify-center py-2 mx-2'>
                 <div className='w-3/4 flex flex-wrap m-2'>
-                    {products.map((product) => (
+                    {products.length > 0 && products.map((product) => (
                         <CardProduct key={product.id}>
                             <CardProduct.Header image={product.image} />
                             <CardProduct.Body title={product.title}>{product.description}</CardProduct.Body>
@@ -92,7 +92,7 @@ const product = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {cart.map((item) => {
+                            {products.length > 0 && cart.map((item) => {
                                 const product = products.find((product) => product.id === item.id);
                                 return (
                                     <tr key={item.id}>
