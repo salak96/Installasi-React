@@ -30,7 +30,7 @@ const Navigation = ({ type }) => {
         );
     } else {
         return (
-            <p className='text-sm mt-4'>
+            <p className='flex justify-center align-center text-sm mt-4'>
                 Already have an account ?{' '}
                 <Link to='/login' className='font-bold text-blue-600 hover:text-blue-800'>
                     Login
