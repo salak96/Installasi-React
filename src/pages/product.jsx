@@ -3,42 +3,15 @@
 import Button from '../components/Elements/Button/Button';
 import CardProduct from '../components/Fragments/CardProduct';
 import { useState, useEffect, useRef } from 'react';
-const products = [
-    {
-        id: 1,
-        title: 'Sepatu Baru',
-        description: 'Sepatu baru dengan kualitas terbaik',
-        price: '500000',
-        image: '/images/sepatu.jpg',
-    },
-    {
-        id: 2,
-        title: 'Sepatu Baru 2',
-        description: 'Sepatu baru dengan kualitas terbaik',
-        price: '250100',
-        image: '/images/sepatu.jpg',
-    },
-    {
-        id: 3,
-        title: 'Sepatu Baru 3',
-        description: 'Sepatu baru dengan kualitas terbaik',
-        price: '1503000',
-        image: '/images/sepatu.jpg',
-    },
-    {
-        id: 4,
-        title: 'Sepatu Baru 4',
-        description: 'Sepatu baru dengan kualitas terbaik',
-        price: '140000',
-        image: '/images/sepatu.jpg',
-    },
-];
+import { getProducts } from '../services/product.service';
+
 const email = localStorage.getItem('email');
 
+//data products
 const product = () => {
     const [cart, setCart] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
-
+    const [products, setProducts] = useState([]);
     useEffect(() => {
         setCart(JSON.parse(localStorage.getItem('cart')) || []);
     }, []);
@@ -65,7 +38,12 @@ const product = () => {
             setCart([...cart, { id, qty: 1 }]);
         }
     };
-
+//useEffect
+    useEffect (() => {
+        getProducts((data)=>
+            setProducts(data)
+        );
+    }, []);
     //useref
     const cartRef = useRef(JSON.parse(localStorage.getItem('cart')) || []);
     const handleAddToCartRef = (id) => {
