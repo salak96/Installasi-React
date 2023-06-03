@@ -88,7 +88,7 @@ export const DetailPage = () => {
                 </div>
             )}
             <button className='rounded-md mt-5  bg-red-600 h-10 px-6 text-white font-semibold min-w-full '>
-            <Link to='/product'>Back toHome</Link>
+                <Link to='/product'>Back toHome</Link>
             </button>
         </div>
     );
