@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { getUsername } from "../services/auth.service";
+import { useEffect, useState } from 'react';
+import { getUsername } from '../services/auth.service';
 
-export const useLogin = () => { 
-    const [username,setUsername] = useState("");
+export const useLogin = () => {
+    const [username, setUsername] = useState('');
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -14,4 +14,4 @@ export const useLogin = () => {
     }, []);
 
     return username;
-}
+};

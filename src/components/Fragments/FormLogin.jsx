@@ -38,7 +38,6 @@ const FormLogin = () => {
             {loginFailed && <p className='text-red-500 m-t-5 text-center'>{loginFailed}</p>}
             <UserLogin></UserLogin>
         </form>
-        
     );
 };
 

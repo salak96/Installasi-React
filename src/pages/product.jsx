@@ -22,8 +22,6 @@ const product = () => {
             setTotalPrice(products.reduce((acc, item) => acc + item.price * item.qty, 0));
         }
     }, [cart, products]);
-  
-
 
     const handleLogOut = () => {
         localStorage.removeItem('token');
@@ -61,7 +59,10 @@ const product = () => {
     return (
         <>
             <div className='flex justify-end bg-blue-600 h-20  text-red-50 items-center px-10'>
-                <a className='text-white text-2xl' href='/profile'> {username}</a>   
+                <a className='text-white text-2xl' href='/profile'>
+                    {' '}
+                    {username}
+                </a>
                 <Button classname={'bg-red-600 ml-5'} onClick={handleLogOut}>
                     Log out
                 </Button>

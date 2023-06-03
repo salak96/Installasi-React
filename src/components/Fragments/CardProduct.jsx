@@ -8,9 +8,9 @@ const CardProduct = (props) => {
 };
 
 const Header = (props) => {
-    const { image,id } = props;
+    const { image, id } = props;
     return (
-        <Link to = {`/product/${id}`} className='block relative'>
+        <Link to={`/product/${id}`} className='block relative'>
             <img alt='product' src={image} className='p-8 rounded-t-lg w-full h-60  bg-repeat' />
         </Link>
     );

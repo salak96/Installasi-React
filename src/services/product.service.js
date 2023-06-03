@@ -11,7 +11,7 @@ export const getProducts = (callback) => {
         });
 };
 
-export const getDetailProduct = (id,callback) => {
+export const getDetailProduct = (id, callback) => {
     axios
         .get(`https://fakestoreapi.com/products/${id}`)
         .then((res) => {

@@ -38,7 +38,7 @@ const router = createBrowserRouter([
     {
         path: '/product/:id',
         element: <DetailPage />,
-    }
+    },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

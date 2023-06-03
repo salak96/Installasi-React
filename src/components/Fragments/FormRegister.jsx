@@ -10,7 +10,6 @@ const FormRegister = () => {
             <Button classname='bg-blue-600 w-full'> Register</Button>
             <UserLogin></UserLogin>
         </form>
-    
     );
 };
 
