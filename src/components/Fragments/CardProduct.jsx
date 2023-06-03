@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { Link } from 'react-router-dom';
 import Button from '../Elements/Button/Button';
 
 const CardProduct = (props) => {
@@ -7,11 +8,11 @@ const CardProduct = (props) => {
 };
 
 const Header = (props) => {
-    const { image } = props;
+    const { image,id } = props;
     return (
-        <a href='/profile' className='block relative'>
-            <img alt='product' src={image} className='p-8 rounded-t-lg w-full h-60 object-cover' />
-        </a>
+        <Link to = {`/product/${id}`} className='block relative'>
+            <img alt='product' src={image} className='p-8 rounded-t-lg w-full h-60  bg-repeat' />
+        </Link>
     );
 };
 

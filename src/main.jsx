@@ -10,7 +10,9 @@ import ProductPage from './pages/product';
 import HomePage from './pages/home';
 // eslint-disable-next-line no-unused-vars
 import ErrorPage from './pages/404.jsx';
+
 import { ProfilePage } from './pages/profile';
+import { DetailPage } from './pages/detailProduct';
 const router = createBrowserRouter([
     {
         path: '/',
@@ -32,6 +34,10 @@ const router = createBrowserRouter([
     {
         path: '/profile',
         element: <ProfilePage />,
+    },
+    {
+        path: '/product/:id',
+        element: <DetailPage />,
     }
 ]);
 
