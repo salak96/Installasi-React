@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getDetailProduct } from '../services/product.service';
-import Button from '../components/Elements/Button/Button';
 
 export const DetailPage = () => {
     const { id } = useParams();

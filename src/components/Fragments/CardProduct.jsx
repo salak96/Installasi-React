@@ -23,7 +23,7 @@ const Body = (props) => {
             <a href='#'>
                 <h5 className='text-white text-xl font-bold tracking-tight'>{title.substring(0, 20)}... </h5>
             </a>
-            <p className='mt-1 text-slate-600'>{children.substring(0, 100)}</p>
+            <p className='mt-2 text-slate-600'>{children.substring(0, 50)}...</p>
             <div className='mt-2 flex items-center'></div>
         </div>
     );
@@ -34,16 +34,16 @@ const Footer = (props) => {
     return (
         <div className='flex justify-between px-5 pb-5'>
             <a href='#'>
-                <span className='text-white text-xl font-bold tracking-tight '>
+                <span className='text-xs font-bold text-white'>
                     {new Intl.NumberFormat('id-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(price)}
                 </span>
             </a>
             <Button
                 type='button'
-                className='bg-blue-600  hover:bg-red-600 text-white text-sm px-4 py-2 rounded-lg'
+                className=' bg-blue-600 text-white font-bold py-2 px-4 rounded-lg'
                 onClick={() => handleAddToCart(id)}
             >
-                Add to Cart
+                Add Cart
             </Button>
         </div>
     );

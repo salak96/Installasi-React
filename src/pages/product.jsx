@@ -66,9 +66,9 @@ const product = () => {
                 <Button classname={'bg-red-600 ml-5'} onClick={handleLogOut}>
                     Log out
                 </Button>
+                {/* CART */}
             </div>
-
-            <div className='flex justify-center py-2 mx-2'>
+            <div className='flex justify-center p-2'>
                 <div className='w-3/4 flex flex-wrap m-2'>
                     {products.length > 0 &&
                         products.map((product) => (
@@ -100,7 +100,7 @@ const product = () => {
                                             <td className='border px-4 py-2'>
                                                 {new Intl.NumberFormat('AS-US', {
                                                     style: 'currency',
-                                                    currency: 'IDR',
+                                                    currency: 'USD',
                                                     minimumFractionDigits: 0,
                                                 }).format(product.price)}
                                             </td>
