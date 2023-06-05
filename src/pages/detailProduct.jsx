@@ -14,7 +14,7 @@ export const DetailPage = () => {
             {Object.keys(product).length > 0 && (
                 <div className='flex p-6 font-mono max-w-xl'>
                     <div className='flex-none w-48 h-100 relative bg-cover rounded-lg'>
-                        <img 
+                        <img
                             src={product.image}
                             alt={product.title}
                             className='absolute z-10 top-20 left-0 inset-0 w-full h-50 object-cover rounded-lg bg'
@@ -89,7 +89,7 @@ export const DetailPage = () => {
                 </div>
             )}
             <button className='rounded-md mt-5  bg-red-600 h-10 px-6 text-white font-semibold min-w-full '>
-            <Link to='/product'>Back toHome</Link>
+                <Link to='/product'>Back toHome</Link>
             </button>
         </div>
     );

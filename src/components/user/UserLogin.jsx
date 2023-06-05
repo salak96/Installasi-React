@@ -12,7 +12,7 @@ function UserComponent() {
 
     return (
         <div className='flex-row-reverse justify-center m-10'>
-            <h1 className='flex m-5 flex-start text-3xl font-bold text-red-600 '>DATABASE</h1>
+            <h1 className='flex m-5 flex-start text-3xl font-bold text-red-600 justify-center align-center'>DATABASE</h1>
             <table className='text-left table-auto'>
                 <thead>
                     <tr>
@@ -32,7 +32,5 @@ function UserComponent() {
         </div>
     );
 }
-
-// css
 
 export default UserComponent;

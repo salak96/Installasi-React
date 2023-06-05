@@ -38,11 +38,7 @@ const Footer = (props) => {
                     {new Intl.NumberFormat('id-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(price)}
                 </span>
             </a>
-            <Button
-                type='button'
-                className=' bg-blue-600 text-white font-bold py-2 px-4 rounded-lg'
-                onClick={() => handleAddToCart(id)}
-            >
+            <Button type='button' className=' bg-blue-600 text-white font-bold py-2 px-4 rounded-lg' onClick={() => handleAddToCart(id)}>
                 Add Cart
             </Button>
         </div>
