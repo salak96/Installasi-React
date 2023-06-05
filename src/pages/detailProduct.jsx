@@ -13,12 +13,12 @@ export const DetailPage = () => {
         <div className='flex flex-col items-center w-full m-5'>
             {Object.keys(product).length > 0 && (
                 <div className='flex p-6 font-mono max-w-xl'>
-                    <div className='flex-none w-48 h-100 relative bg-fixed'>
-                        <img
+                    <div className='flex-none w-48 h-100 relative bg-cover rounded-lg'>
+                        <img 
                             src={product.image}
                             alt={product.title}
-                            className='absolute z-10 inset-0 w-full h-50 object-cover rounded-lg'
-                            loading='lazy '
+                            className='absolute z-10 top-20 left-0 inset-0 w-full h-50 object-cover rounded-lg bg'
+                            loading='lazy'
                         />
                     </div>
                     <form className='flex-auto pl-6'>
@@ -64,7 +64,9 @@ export const DetailPage = () => {
                             </div>
                         </div>
                         <div className='flex space-x-2 mb-4 text-sm font-medium'>
-                            <div className='flex space-x-4'>
+                            <div className='space-y-1'>
+                                {/* title */}
+                                <p className='text-black'>{product.description}</p>
                                 <button
                                     className='px-6 h-12 uppercase font-semibold tracking-wider border-2 border-black bg-teal-400 text-black'
                                     type='submit'
