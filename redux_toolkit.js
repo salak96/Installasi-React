@@ -39,7 +39,7 @@ store.subscribe(() => {
     console.log('STORE CHANGE SUBCRIBE: ', store.getState());
 });
 
-//dispach
+//dispach data di input
 store.dispatch(addToCart({id: 1,qty: 30}));
 store.dispatch(addToCart({id: 2,qty: 10}));
 store.dispatch(login());
