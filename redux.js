@@ -1,4 +1,4 @@
-import { createStore } from 'redux';
+import { legacy_createStore } from 'redux';
 
 //reducer
 const cartReducer = (
@@ -6,7 +6,7 @@ const cartReducer = (
         cart: [
             {
                 id: 1,
-                qty: 1,
+                qty: 12,
             },
         ],
     },
@@ -24,8 +24,16 @@ const cartReducer = (
 };
 
 //store
-const store = createStore(cartReducer);
+const store = legacy_createStore(cartReducer);
 console.log('oncreate store: ', store.getState());
-//subscribe
+
+//subscribe data perubahan baru
+store.subscribe(() => {
+    console.log('STORE CHANGE : ', store.getState());
+});
 
 //dispatch
+const action1 = { type: 'ADD_TO_CART', payload: { id: 2, qty: 20 } };
+store.dispatch(action1);
+
+
