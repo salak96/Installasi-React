@@ -1,12 +1,14 @@
 /* eslint-disable no-unused-vars */
+import { data } from 'autoprefixer';
 import React, { useState, useEffect } from 'react';
-
+import {setListUser} from '../../redux/slices/userSlice';
 function UserComponent() {
     const [users, setUsers] = useState([]);
     useEffect(() => {
         fetch('https://fakestoreapi.com/users')
             .then((response) => response.json())
-            .then((data) => setUsers(data));
+            .then((data) => { setUsers(data)
+            });
     }, []);
 
     return (

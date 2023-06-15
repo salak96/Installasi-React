@@ -18,13 +18,15 @@ const Header = (props) => {
 };
 
 const Body = (props) => {
-    const { children, title } = props;
+    const { judul } = props;
     return (
         <div className='px-5 pb-5 h-40'>
             <a href='#'>
-                <h5 className='text-white text-xl font-bold tracking-tight'>{title.substring(0, 20)}... </h5>
+                <h5 className='text-white text-xl font-bold tracking-tight'>{judul ?.substring(0, 60)}  </h5>
             </a>
-            <p className='mt-1 text-slate-600'>{children.substring(0, 100)}</p>
+            <p className='mt-1 text-slate-600'>
+            {judul ?.substring(0, 200)}
+        </p>
             <div className='mt-2 flex items-center'></div>
         </div>
     );

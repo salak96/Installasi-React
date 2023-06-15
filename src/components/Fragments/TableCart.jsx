@@ -48,7 +48,13 @@ const TableCart = (props) => {
                                 <td className='border px-4 py-2'>
                                     {product.title.substring(0, 10)}...
                                 </td>
-                                <td>
+                                <td className='border px-4 py-2'>
+                                    {product.price}
+                                </td>
+                                <td className='border px-4 py-2'>
+                                    {item.qty}
+                                </td>
+                                <td className='border px-4 py-2'>
                                     ${" "}
                                    {(item.qty * product.price).toLocaleString("id-ID", {
                                     style: "currency",
