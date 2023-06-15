@@ -10,7 +10,7 @@ const cartSlice = createSlice({
             // eslint-disable-next-line no-unused-vars
             const itemInCart = state.data.find((item) => item.id === action.payload.id);
             if (itemInCart) {
-                itemInCart.qty ++;
+                itemInCart.qty++;
             } else {
                 state.data.push(action.payload);
             }

@@ -17,7 +17,7 @@ import store from './redux/store';
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <HomePage />, 
+        element: <HomePage />,
         errorElement: <ErrorPage />,
     },
     {

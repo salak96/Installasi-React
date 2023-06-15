@@ -31,11 +31,11 @@ const FormLogin = () => {
         <form onSubmit={handleLogin}>
             <Inputform label='Username' type='text' placeholder='Aliando' name='username' ref={usernameRef} />
             <Inputform label='Password' type='password' placeholder='*****' name='password' />
-            <Button classname='bg-blue-600 w-full' type='submit'>{' '}
+            <Button classname='bg-blue-600 w-full' type='submit'>
+                {' '}
                 Login
             </Button>
-            {loginFailed && <p className='text-red-500 m-t-5 text-center'>
-                {loginFailed}</p>}
+            {loginFailed && <p className='text-red-500 m-t-5 text-center'>{loginFailed}</p>}
             <UserLogin></UserLogin>
         </form>
     );
