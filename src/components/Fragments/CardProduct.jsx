@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
 import Button from '../Elements/Button/Button';
-
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/slices/cartSlice';
 const CardProduct = (props) => {
     const { children } = props;
     return <div className='my-2 mx-2 w-full max-w-sm bg-gray-800 border border-slate-400 rouded-lg shadow'>{children}</div>;
@@ -30,7 +31,8 @@ const Body = (props) => {
 };
 
 const Footer = (props) => {
-    const { price, handleAddToCart, id } = props;
+    const { price, id } = props;
+    const dispach = useDispatch();
     return (
         <div className='flex justify-between px-5 pb-5'>
             <a href='#'>
@@ -41,7 +43,7 @@ const Footer = (props) => {
             <Button
                 type='button'
                 className='bg-blue-600  hover:bg-red-600 text-white text-sm px-4 py-2 rounded-lg'
-                onClick={() => handleAddToCart(id)}
+                onClick={() => dispach(addToCart({ id, qty: 1 }))}
             >
                 Add to Cart
             </Button>

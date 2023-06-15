@@ -10,13 +10,14 @@ import ProductPage from './pages/product';
 import HomePage from './pages/home';
 // eslint-disable-next-line no-unused-vars
 import ErrorPage from './pages/404.jsx';
-
 import { ProfilePage } from './pages/profile';
 import { DetailPage } from './pages/detailProduct';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <HomePage />,
+        element: <HomePage />, 
         errorElement: <ErrorPage />,
     },
     {
@@ -43,6 +44,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <Provider store={store}>
+            <RouterProvider router={router} />
+        </Provider>
     </React.StrictMode>
 );

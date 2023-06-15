@@ -121,6 +121,12 @@ Install my-project with yarn
 http://localhost:5173/
 ```
 
+-   Redux
+
+```
+npm i react-redux
+```
+
 ## 🚀 About Me
 
 Saya adalah seorang Front End Developer yang ingin terus belajar dan mengembangkan diri. Saya juga ingin berbagi ilmu yang saya dapatkan melalui tulisan di blog saya [lambangsasangka.com](https://lambangsasangka.com/).

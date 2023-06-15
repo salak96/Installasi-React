@@ -35,5 +35,3 @@ store.subscribe(() => {
 //dispatch di input
 const action1 = { type: 'ADD_TO_CART', payload: { id: 2, qty: 20 } };
 store.dispatch(action1);
-
-

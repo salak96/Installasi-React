@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 
 function UserComponent() {
     const [users, setUsers] = useState([]);
-
     useEffect(() => {
         fetch('https://fakestoreapi.com/users')
             .then((response) => response.json())
@@ -33,6 +32,5 @@ function UserComponent() {
     );
 }
 
-// css
 
 export default UserComponent;
