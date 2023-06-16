@@ -1,14 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const cartSlice = createSlice({
-    name: 'cart',
+    name: "cart",
     initialState: {
-        data: JSON.parse(localStorage.getItem('cart')) || [],
+        data: JSON.parse(localStorage.getItem("cart")) || [],
     },
     reducers: {
         addToCart: (state, action) => {
             // eslint-disable-next-line no-unused-vars
-            const itemInCart = state.data.find((item) => item.id === action.payload.id);
+            const itemInCart = state.data.find(
+                (item) => item.id === action.payload.id);
             if (itemInCart) {
                 itemInCart.qty++;
             } else {
