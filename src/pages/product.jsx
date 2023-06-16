@@ -2,14 +2,16 @@
 /* eslint-disable no-unused-vars */
 import Button from '../components/Elements/Button/Button';
 import CardProduct from '../components/Fragments/CardProduct';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { getProducts } from '../services/product.service';
 import { useLogin } from '../hooks/useLogin';
 import TableCart from '../components/Fragments/TableCart';
 import Navbar from '../components/Layouts/Navbar';
+import { DarkMode } from '../context/DarkMode';
 
 //data products
 const product = () => {
+    const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
     const [products, setProducts] = useState([]);
     useLogin(); //hooks useLogin username
     //useEffect
@@ -21,7 +23,7 @@ const product = () => {
     return (
         <>
             <Navbar />
-            <div className='flex justify-center py-2 mx-2'>
+            <div className={`flex justify-center items-center min-h-screen ${isDarkMode && 'bg-slate-900'}`}>
                 <div className='w-3/4 flex flex-wrap m-2'>
                     {products.length > 0 &&
                         products.map((product) => (

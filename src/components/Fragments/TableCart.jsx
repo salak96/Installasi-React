@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useSelector } from 'react-redux';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { DarkMode } from '../../context/DarkMode';
 const TableCart = (props) => {
     const { products } = props;
     const cart = useSelector((state) => state.cart.data);
+    const { isDarkMode } = useContext(DarkMode);
     // eslint-disable-next-line no-unused-vars
     const [totalPrice, setTotalPrice] = useState(0);
     //fungsi menjumlahkan total price
@@ -30,7 +32,7 @@ const TableCart = (props) => {
     }, [cart]);
 
     return (
-        <table className='text-left table-auto'>
+        <table className={`text-left table-auto border-separate border-spacing-x-5 ${isDarkMode && 'bg-slate-900'}`}>
             <thead>
                 <tr>
                     <th className='px-4 py-2 border'>Product</th>

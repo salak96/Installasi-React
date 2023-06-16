@@ -56,14 +56,13 @@ export const ProfilePage = () => {
                 </tbody>
             </table>
             <div className='flex flex-row-reverse justify-center m-5 p-5'>
-                <div className='flex flex-row-reverse justify-between max-w-screen-xl'>
-                    <Button className='text-2xl font-medium text-red-600 m-5 p-5'>
+                <div className='flex flex-row-reverse justify-center align-center max-w-screen-xl'>
+                    <Button className='text-2xl font-medium text-red-600 m-5 p-5 px-10 mx-5'>
                         <Link to='/login'>Log out</Link>
                     </Button>
-                    <br></br>
-                    <Button className='text-2xl font-medium text-blue-600'>
+                    <button className='px-10 mx-5 bg-black hover:bg-blue-700 text-white font-bold py-2 rounded'>
                         <Link to='/product'>product</Link>
-                    </Button>
+                    </button>
                 </div>
             </div>
         </div>
