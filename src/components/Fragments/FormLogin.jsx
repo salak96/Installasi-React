@@ -36,7 +36,9 @@ const FormLogin = () => {
                 Login
             </Button>
             {loginFailed && <p className='text-red-500 m-t-5 text-center'>{loginFailed}</p>}
-            <UserLogin></UserLogin>
+            <UserLogin>
+                
+            </UserLogin>
         </form>
     );
 };

@@ -2,7 +2,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Button from '../Elements/Button/Button';
 
 const AuthLayouts = (props) => {
     // eslint-disable-next-line react/prop-types, no-unused-vars
@@ -19,17 +18,25 @@ const AuthLayouts = (props) => {
     );
 };
 
-const Navigation = (props) => {
-    const { type } = props;
-    return (
-        <div className='flex justify-center'>
-            <Link to={`/login/${type}`}>
-                <Button type='button' className='bg-blue-600  hover:bg-red-600 text-white text-sm px-4 py-2 rounded-lg'>
+const Navigation = ({ type }) => {
+    if (type === 'login') {
+        return (
+            <p className='ml-10 flex justify-items-center align-center text-sm mt-4'>
+                Dont have an account yet ?{' '}
+                <Link to='/register' className='font-bold text-blue-600 hover:text-blue-800'>
+                    Register
+                </Link>
+            </p>
+        );
+    } else {
+        return (
+            <p className='ml-10 flex justify-items-center align-center text-sm mt-4'>
+                Already have an account ?{' '}
+                <Link to='/login' className='font-bold text-blue-600 hover:text-blue-800'>
                     Login
-                </Button>
-            </Link>
-        </div>
-    );
+                </Link>
+            </p>
+        );
+    }
 };
-
 export default AuthLayouts;

@@ -5,16 +5,17 @@ const userSlice = createSlice ({
     name:'user',
     initialState:{
         data:{
-            username:'',
-            addres:'',
             listUser:[],
+            Address:'',
+            City:'',
+            ZipCode:'',
+            Phone:'',
         },
     },
     reducers:{
          setListUser :(state,action) =>{
             const username = action.payload.find((username))
             state.data.listUser = action.payload
-
          }
     }
 })
