@@ -8,7 +8,6 @@ function UserComponent() {
         fetch('https://fakestoreapi.com/users')
             .then((response) => response.json())
             .then((data) => setUsers(data));
-
     }, []);
 
     return (

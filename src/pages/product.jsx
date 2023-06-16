@@ -27,7 +27,7 @@ const product = () => {
                         products.map((product) => (
                             <CardProduct key={product.id}>
                                 <CardProduct.Header image={product.image} id={product.id} />
-                                <CardProduct.Body  judul={product.title} />
+                                <CardProduct.Body judul={product.title} description={product.description} />
                                 <CardProduct.Footer price={product.price} id={product.id} />
                             </CardProduct>
                         ))}

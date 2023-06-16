@@ -1,29 +1,28 @@
 import { Link } from 'react-router-dom';
 import Button from '../components/Elements/Button/Button';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useLogin } from '../hooks/useLogin';
-import  {setListUser} from '../redux/slices/userSlice';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setListUser } from '../redux/slices/userSlice';
+
 export const ProfilePage = () => {
-    // eslint-disable-next-line no-unused-vars
-    const [username, setUsername] = useState([]);
     const userNama = useLogin();
     const dispatch = useDispatch();
+    const listUser = useSelector((state) => state.user.data.listUser);
     useEffect(() => {
         fetch('https://fakestoreapi.com/users/')
             .then((response) => response.json())
             .then((data) => {
-                dispatch(setListUser(data.address));
-            }
-        );
+                dispatch(setListUser(data));
+            });
     }, []);
-   
+
     return (
         <div className='flex flex-col items-center w-full m-5'>
             <img
                 className='inline-block h-50 w-50 rounded-full ring-2 ring-red-600'
                 src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
-                alt={'username'}
+                alt={userNama}
                 width={256}
                 height={256}
                 loading='lazy'
@@ -41,20 +40,31 @@ export const ProfilePage = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {username.map((user) => (
-                        <tr key={user.id}>
-                            <td className='border px-4 py-2'>{user.address.street}</td>
-                            <td className='border px-4 py-2'>{user.address.city}</td>
-                            <td className='border px-4 py-2'>{user.address.zipcode}</td>
-                            <td className='border px-4 py-2'>{user.phone}</td>
-                        </tr>
-                    ))}
+                    {listUser.map((user) => {
+                        if (userNama === user.address.street && userNama === user.city && userNama === user.zipcode && userNama === user.phone) {
+                            return (
+                                <tr key={user.id}>
+                                    <td className='border px-4 py-2'>{user.address.street}</td>
+                                    <td className='border px-4 py-2'>{user.address.city}</td>
+                                    <td className='border px-4 py-2'>{user.address.zipcode}</td>
+                                    <td className='border px-4 py-2'>{user.phone}</td>
+                                </tr>
+                            );
+                        }
+                        return null;
+                    })}
                 </tbody>
             </table>
-            <div className='flex flex-row-reverse justify-center m-10'>
-                <Button className='text-2xl font-medium text-blue-600 m-5'>
-                    <Link to='/login'>Log out</Link>
-                </Button>
+            <div className='flex flex-row-reverse justify-center m-5 p-5'>
+                <div className='flex flex-row-reverse justify-between max-w-screen-xl'>
+                    <Button className='text-2xl font-medium text-red-600 m-5 p-5'>
+                        <Link to='/login'>Log out</Link>
+                    </Button>
+                    <br></br>
+                    <Button className='text-2xl font-medium text-blue-600'>
+                        <Link to='/product'>product</Link>
+                    </Button>
+                </div>
             </div>
         </div>
     );

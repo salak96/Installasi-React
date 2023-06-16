@@ -45,34 +45,28 @@ const TableCart = (props) => {
                         const product = products.find((products) => products.id === item.id);
                         return (
                             <tr key={item.id}>
+                                <td className='border px-4 py-2'>{product.title.substring(0, 10)}...</td>
+                                <td className='border px-4 py-2'>{product.price}</td>
+                                <td className='border px-4 py-2'>{item.qty}</td>
                                 <td className='border px-4 py-2'>
-                                    {product.title.substring(0, 10)}...
-                                </td>
-                                <td className='border px-4 py-2'>
-                                    {product.price}
-                                </td>
-                                <td className='border px-4 py-2'>
-                                    {item.qty}
-                                </td>
-                                <td className='border px-4 py-2'>
-                                   {(item.qty * product.price).toLocaleString("id-ID", {
-                                    style: "currency",
-                                    currency: "USD",
-                                   })}
+                                    {(item.qty * product.price).toLocaleString('id-ID', {
+                                        style: 'currency',
+                                        currency: 'USD',
+                                    })}
                                 </td>
                             </tr>
                         );
                     })}
-                    <tr ref={totalPriceRef}>
-                        <td colSpan={3} className='border px-4 py-2'>
+                <tr ref={totalPriceRef}>
+                    <td colSpan={3} className='border px-4 py-2'>
                         <b>Total Price</b>
-                        </td>
+                    </td>
                     <td>
                         <b>
                             ${' '}
-                            {totalPrice.toLocaleString("id-ID", {
-                                style: "currency",
-                                currency: "USD",
+                            {totalPrice.toLocaleString('id-ID', {
+                                style: 'currency',
+                                currency: 'USD',
                             })}
                         </b>
                     </td>
