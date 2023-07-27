@@ -32,7 +32,8 @@ npm install --save-dev --save-exact prettier
 
 -   Masukan isi .prittierrc.json
 
-```{
+```
+{
 "tabWidth": 4,
 "singleQuote": true,
 "jsxSingleQuote": true,
@@ -129,4 +130,4 @@ Saya adalah seorang Front End Developer yang ingin terus belajar dan mengembangk
 
 ## Support
 
-For support, email fake@lambangsasangka.com .
+For support, email fake@lambangsasangka.com.
